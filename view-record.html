@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Record</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>View Student Record</h2>
+        <form id="viewForm">
+            <label for="viewName">Search by Name:</label>
+            <input type="text" id="viewName" name="viewName" required>
+            <button type="button" onclick="viewRecord()">View Record</button>
+        </form>
+        <div id="recordDetails" style="display:none;"></div>
+        <a href="index.html">Back to Home</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

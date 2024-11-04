@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Students</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Student Records</h1>
+        
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="view-students.html">View All Students</a></li>
+            </ul>
+        </nav>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Course</th>
+                    <th>Marks 1</th>
+                    <th>Marks 2</th>
+                    <th>Marks 3</th>
+                    <th>Total</th>
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody id="studentRecords"></tbody>
+        </table>
+    </div>
+
+    <script>
+        function displayRecords() {
+            const students = JSON.parse(localStorage.getItem('students')) || [];
+            const studentRecords = document.getElementById('studentRecords');
+
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.course}</td>
+                    <td>${student.marks1}</td>
+                    <td>${student.marks2}</td>
+                    <td>${student.marks3}</td>
+                    <td>${student.total}</td>
+                    <td>${student.average}</td>
+                `;
+                studentRecords.appendChild(row);
+            });
+        }
+
+        window.onload = displayRecords;
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Record</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Student Record</h2>
+        <form id="editForm">
+            <label for="searchName">Search by Name:</label>
+            <input type="text" id="searchName" name="searchName" required>
+
+            <button type="button" onclick="searchStudent()">Search</button>
+
+            <div id="editSection" style="display:none;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+
+                <label for="marks1">Marks 1:</label>
+                <input type="number" id="marks1" name="marks1" required>
+
+                <label for="marks2">Marks 2:</label>
+                <input type="number" id="marks2" name="marks2" required>
+
+                <label for="marks3">Marks 3:</label>
+                <input type="number" id="marks3" name="marks3" required>
+
+                <button type="button" onclick="saveEdits()">Save Changes</button>
+            </div>
+        </form>
+        <a href="index.html">Back to Home</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Record Management System</h1>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="view-students.html">View All Students</a></li>
+                <li><a href="edit-student.html">Edit Student Record</a></li>
+                <li><a href="view-record.html">View Record</a></li>
+            </ul>
+        </nav>
+
+        <h2>Add Student Record</h2>
+        <form id="studentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required><br><br>
+
+            <label for="marks1">Marks 1:</label>
+            <input type="number" id="marks1" name="marks1" required><br><br>
+
+            <label for="marks2">Marks 2:</label>
+            <input type="number" id="marks2" name="marks2" required><br><br>
+
+            <label for="marks3">Marks 3:</label>
+            <input type="number" id="marks3" name="marks3" required><br><br>
+
+            <label for="total">Total:</label>
+            <input type="number" id="total" name="total" readonly><br><br>
+
+            <label for="average">Grade Average:</label>
+            <input type="text" id="average" name="average" readonly><br><br>
+
+            <button type="button" onclick="calculateGrades()">Calculate Grades</button><br><br>
+            <button type="button" onclick="saveRecord()">Save Record</button><br><br>
+        </form>
+    </div>
+
+    <script>
+        function calculateGrades() {
+            const marks1 = parseFloat(document.getElementById('marks1').value) || 0;
+            const marks2 = parseFloat(document.getElementById('marks2').value) || 0;
+            const marks3 = parseFloat(document.getElementById('marks3').value) || 0;
+
+            const total = marks1 + marks2 + marks3;
+            const average = (total / 3).toFixed(2);
+
+            document.getElementById('total').value = total;
+            document.getElementById('average').value = average;
+        }
+
+        function saveRecord() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const course = document.getElementById('course').value;
+            const marks1 = document.getElementById('marks1').value;
+            const marks2 = document.getElementById('marks2').value;
+            const marks3 = document.getElementById('marks3').value;
+            const total = document.getElementById('total').value;
+            const average = document.getElementById('average').value;
+
+            const student = { name, age, course, marks1, marks2, marks3, total, average };
+
+            let students = JSON.parse(localStorage.getItem('students')) || [];
+            students.push(student);
+            localStorage.setItem('students', JSON.stringify(students));
+
+            alert('Record saved successfully!');
+            document.getElementById('studentForm').reset();
+        }
+    </script>
+</body>
+</html>
